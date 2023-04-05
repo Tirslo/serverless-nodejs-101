@@ -1,4 +1,3 @@
-'use strict';
 const { Client } = require('pg');
 const pgUser = process.env.PG_USER
 const pgPass = process.env.PG_PASS
