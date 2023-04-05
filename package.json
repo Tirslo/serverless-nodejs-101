@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "pg-promise": "^11.4.3"
+  },
+  "devDependencies": {
+    "serverless-newrelic-lambda-layers": "^3.4.3",
+    "serverless-secrets-plugin": "^0.1.0"
+  }
+}

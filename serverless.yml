@@ -1,0 +1,30 @@
+service: blog-serverless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: ap-southeast-2
+
+functions:
+  blog-function:
+    handler: index.handler
+    environment:
+      PG_PASS: ${ssm:pgPassDevRel}
+      PG_USER: ${ssm:pgUserDevRel}
+      PG_HOST: ${ssm:pgHostDevRel}
+      PG_PORT: ${ssm:pgPortDevRel}
+    events:
+      - http:
+          path: /games
+          method: GET
+      - http:
+          path: /addGames
+          method: POST
+plugins: 
+  - serverless-newrelic-lambda-layers 
+custom:
+  newRelic:
+    accountId: ${ssm:nrDevRelAccId}
+    apiKey: ${ssm:nrDevRelKey}
+    enableFunctionLogs: true
